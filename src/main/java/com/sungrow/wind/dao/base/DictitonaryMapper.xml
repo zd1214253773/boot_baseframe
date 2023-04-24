@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sungrow.wind.dao.base.DictitonaryMapper">
+  <resultMap id="BaseResultMap" type="com.sungrow.wind.entity.Dictitonary">
+    <id column="dictionary_id" jdbcType="VARCHAR" property="dictionaryId" />
+    <result column="parent_item__key" jdbcType="VARCHAR" property="parentItemKey" />
+    <result column="item_value" jdbcType="VARCHAR" property="itemValue" />
+    <result column="item_code" jdbcType="VARCHAR" property="itemCode" />
+    <result column="sequence" jdbcType="INTEGER" property="sequence" />
+    <result column="item_describe" jdbcType="VARCHAR" property="itemDescribe" />
+    <result column="group_key" jdbcType="VARCHAR" property="groupKey" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="oper_code" jdbcType="VARCHAR" property="operCode" />
+    <result column="oper_name" jdbcType="VARCHAR" property="operName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="modifyer_code" jdbcType="VARCHAR" property="modifyerCode" />
+    <result column="modifyer_name" jdbcType="VARCHAR" property="modifyerName" />
+    <result column="valid" jdbcType="VARCHAR" property="valid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    dictionary_id, parent_item__key, item_value, item_code, sequence, item_describe, 
+    group_key, create_time, oper_code, oper_name, update_time, modifyer_code, modifyer_name, 
+    valid
+  </sql>
+  <insert id="insertSelective" parameterType="com.sungrow.wind.entity.Dictitonary">
+    insert into public.dictitonary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dictionaryId != null">
+        dictionary_id,
+      </if>
+      <if test="parentItemKey != null">
+        parent_item__key,
+      </if>
+      <if test="itemValue != null">
+        item_value,
+      </if>
+      <if test="itemCode != null">
+        item_code,
+      </if>
+      <if test="sequence != null">
+        sequence,
+      </if>
+      <if test="itemDescribe != null">
+        item_describe,
+      </if>
+      <if test="groupKey != null">
+        group_key,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="operCode != null">
+        oper_code,
+      </if>
+      <if test="operName != null">
+        oper_name,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="modifyerCode != null">
+        modifyer_code,
+      </if>
+      <if test="modifyerName != null">
+        modifyer_name,
+      </if>
+      <if test="valid != null">
+        valid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dictionaryId != null">
+        #{dictionaryId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentItemKey != null">
+        #{parentItemKey,jdbcType=VARCHAR},
+      </if>
+      <if test="itemValue != null">
+        #{itemValue,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="itemDescribe != null">
+        #{itemDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="groupKey != null">
+        #{groupKey,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operCode != null">
+        #{operCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operName != null">
+        #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyerCode != null">
+        #{modifyerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyerName != null">
+        #{modifyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null">
+        #{valid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sungrow.wind.entity.Dictitonary">
+    update public.dictitonary
+    <set>
+      <if test="parentItemKey != null">
+        parent_item__key = #{parentItemKey,jdbcType=VARCHAR},
+      </if>
+      <if test="itemValue != null">
+        item_value = #{itemValue,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        item_code = #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="itemDescribe != null">
+        item_describe = #{itemDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="groupKey != null">
+        group_key = #{groupKey,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operCode != null">
+        oper_code = #{operCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operName != null">
+        oper_name = #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyerCode != null">
+        modifyer_code = #{modifyerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyerName != null">
+        modifyer_name = #{modifyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null">
+        valid = #{valid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where dictionary_id = #{dictionaryId,jdbcType=VARCHAR}
+     and valid = '1' 
+  </update>
+  <select id="listByPage" parameterType="com.sungrow.wind.vo.query.DictitonaryQueryVO" resultMap="BaseResultMap">
+    select * from public.dictitonary
+    <where>
+      <if test="dictionaryId != null and dictionaryId.trim() != '' ">
+        and dictionary_id = #{dictionaryId,jdbcType=VARCHAR}
+      </if>
+      <if test="parentItemKey != null and parentItemKey.trim() != '' ">
+        and parent_item__key = #{parentItemKey,jdbcType=VARCHAR}
+      </if>
+      <if test="itemValue != null and itemValue.trim() != '' ">
+        and item_value = #{itemValue,jdbcType=VARCHAR}
+      </if>
+      <if test="itemCode != null and itemCode.trim() != '' ">
+        and item_code = #{itemCode,jdbcType=VARCHAR}
+      </if>
+      <if test="sequence != null ">
+        and sequence = #{sequence,jdbcType=INTEGER}
+      </if>
+      <if test="itemDescribe != null and itemDescribe.trim() != '' ">
+        and item_describe = #{itemDescribe,jdbcType=VARCHAR}
+      </if>
+      <if test="groupKey != null and groupKey.trim() != '' ">
+        and group_key = #{groupKey,jdbcType=VARCHAR}
+      </if>
+       and valid = '1' 
+    </where>
+    order by create_time desc
+  </select>
+</mapper>

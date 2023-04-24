@@ -1,0 +1,63 @@
+insert into
+public.idc_main_statistics
+
+(select '39.1.2' || '国' || cast(substr(cast(WorkLoad_OrdDate as varchar(50)),1,4) as int) || cast(substr(cast(WorkLoad_OrdDate as varchar(50)),6,2) as int) as idc_main_statistics_id,
+(SELECT idc_extend_id FROM "indicator" a LEFT JOIN indicator_extend b on a.idc_id=b.idc_id where idc_order_final='39.1.2' and idc_year=2020101 and b.valid='1' and a.valid='1') as idc_extend_id,
+(SELECT b.hospital_id FROM "indicator" a LEFT JOIN indicator_extend b on a.idc_id=b.idc_id where idc_order_final='39.1.2' and idc_year=2020101 and b.valid='1' and a.valid='1') as hospital_id,
+count(DISTINCT(WorkLoad_PAADM_DR)) as idc_value,
+cast(substr(cast(WorkLoad_OrdDate as varchar(50)),1,4) as int) as data_year,
+cast(substr(cast(WorkLoad_OrdDate as varchar(50)),6,2) as int) as data_month,
+null as data_depart,
+null as data_doctor,
+true as data_collect_flag,
+null as remark,
+now()::timestamp(0)without time zone as create_time,
+null as oper_code,
+null as oper_name,
+now()::timestamp(0)without time zone as update_time,
+null as modifyer_code,
+null as modifyer_name,
+'1' as valid,
+'TIME_DIME_MONTH' as dimension_time_level,
+'UNIT_DIME_KS' as dimension_unit_level
+FROM public.etl_dhc_workload a
+left join public.etl_arc_itmmast b on a.workload_itemord_dr=b.arcim_rowid
+left join public.etl_pa_adm c on a.WorkLoad_PAADM_DR=c.paadm_rowid 
+--left join public.dept_constract d on a.resdep_code =d.dept_code_his 
+WHERE WorkLoad_OrdDate>='2021-04-01'
+AND WorkLoad_OrdDate<'2021-04-02'
+and a.CTLOC_Hospital_DR=3
+AND WorkLoad_Type in ('O','E')
+and c.PAADM_VisitStatus='A'
+group by data_year,data_month)
+union
+(select '39.1.2' || '国' || dept_code_med || cast(substr(cast(WorkLoad_OrdDate as varchar(50)),1,4) as int) || cast(substr(cast(WorkLoad_OrdDate as varchar(50)),6,2) as int) as idc_main_statistics_id,
+(SELECT idc_extend_id FROM "indicator" a LEFT JOIN indicator_extend b on a.idc_id=b.idc_id where idc_order_final='39.1.2' and idc_year=2020101 and b.valid='1' and a.valid='1') as idc_extend_id,
+(SELECT b.hospital_id FROM "indicator" a LEFT JOIN indicator_extend b on a.idc_id=b.idc_id where idc_order_final='39.1.2' and idc_year=2020101 and b.valid='1' and a.valid='1') as hospital_id,
+count(DISTINCT(WorkLoad_PAADM_DR)) as idc_value,
+cast(substr(cast(WorkLoad_OrdDate as varchar(50)),1,4) as int) as data_year,
+cast(substr(cast(WorkLoad_OrdDate as varchar(50)),6,2) as int) as data_month,
+dept_code_med as data_depart,
+null as data_doctor,
+true as data_collect_flag,
+null as remark,
+now()::timestamp(0)without time zone as create_time,
+null as oper_code,
+null as oper_name,
+now()::timestamp(0)without time zone as update_time,
+null as modifyer_code,
+null as modifyer_name,
+'1' as valid,
+'TIME_DIME_MONTH' as dimension_time_level,
+'UNIT_DIME_KS' as dimension_unit_level
+FROM public.etl_dhc_workload a
+left join public.etl_arc_itmmast b on a.workload_itemord_dr=b.arcim_rowid
+left join public.etl_pa_adm c on a.WorkLoad_PAADM_DR=c.paadm_rowid
+left join public.dept_constract d on a.resdep_code =d.dept_code_his
+WHERE WorkLoad_OrdDate>='2021-04-01'
+AND WorkLoad_OrdDate<'2021-04-02'
+and a.CTLOC_Hospital_DR=3
+AND WorkLoad_Type in ('O','E')
+and dept_code_med is not null
+and c.PAADM_VisitStatus='A'
+group by dept_code_med,data_year,data_month)

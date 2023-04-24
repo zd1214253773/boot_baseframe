@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: iHybrid-H_Performance_API
+  profiles:
+    active: local
+server:
+  tomcat:
+    #只有大于0才有效
+    acceptCount: 100
+    maxConnections: 1000
+    maxThreads: 200
+logging:
+  path: ./log

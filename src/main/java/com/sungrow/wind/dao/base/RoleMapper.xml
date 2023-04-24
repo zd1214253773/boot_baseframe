@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sungrow.wind.dao.base.RoleMapper">
+  <resultMap id="BaseResultMap" type="com.sungrow.wind.entity.Role">
+    <id column="role_id" jdbcType="VARCHAR" property="roleId" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+    <result column="idc_version" jdbcType="INTEGER" property="idcVersion" />
+    <result column="idc_extend_id" jdbcType="VARCHAR" property="idcExtendId" />
+    <result column="idc_name" jdbcType="VARCHAR" property="idcName" />
+    <result column="report_permission" jdbcType="VARCHAR" property="reportPermission" />
+    <result column="report_user" jdbcType="VARCHAR" property="reportUser" />
+    <result column="approve_permission" jdbcType="VARCHAR" property="approvePermission" />
+    <result column="approve_user" jdbcType="VARCHAR" property="approveUser" />
+    <result column="look_permission" jdbcType="VARCHAR" property="lookPermission" />
+    <result column="dep_id" jdbcType="VARCHAR" property="depId" />
+    <result column="dep_name" jdbcType="VARCHAR" property="depName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="oper_code" jdbcType="VARCHAR" property="operCode" />
+    <result column="oper_name" jdbcType="VARCHAR" property="operName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="modifyer_code" jdbcType="VARCHAR" property="modifyerCode" />
+    <result column="modifyer_name" jdbcType="VARCHAR" property="modifyerName" />
+    <result column="valid" jdbcType="VARCHAR" property="valid" />
+    <result column="hospital_id" jdbcType="VARCHAR" property="hospitalId" />
+    <result column="finally_user" jdbcType="VARCHAR" property="finallyUser" />
+    <result column="look_user" jdbcType="VARCHAR" property="lookUser" />
+    <result column="finally_permission" jdbcType="VARCHAR" property="finallyPermission" />
+    <result column="finally_dep" jdbcType="VARCHAR" property="finallyDep" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    role_id, role, idc_version, idc_extend_id, idc_name, report_permission, report_user, 
+    approve_permission, approve_user, look_permission, dep_id, dep_name, create_time, 
+    oper_code, oper_name, update_time, modifyer_code, modifyer_name, valid,hospital_id,
+    finally_user,look_user,finally_permission,finally_dep
+  </sql>
+  <insert id="insertSelective" parameterType="com.sungrow.wind.entity.Role">
+    insert into public.role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="role != null">
+        role,
+      </if>
+      <if test="idcVersion != null">
+        idc_version,
+      </if>
+      <if test="idcExtendId != null">
+        idc_extend_id,
+      </if>
+      <if test="idcName != null">
+        idc_name,
+      </if>
+      <if test="reportPermission != null">
+        report_permission,
+      </if>
+      <if test="reportUser != null">
+        report_user,
+      </if>
+      <if test="approvePermission != null">
+        approve_permission,
+      </if>
+      <if test="approveUser != null">
+        approve_user,
+      </if>
+      <if test="lookPermission != null">
+        look_permission,
+      </if>
+      <if test="depId != null">
+        dep_id,
+      </if>
+      <if test="depName != null">
+        dep_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="operCode != null">
+        oper_code,
+      </if>
+      <if test="operName != null">
+        oper_name,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="modifyerCode != null">
+        modifyer_code,
+      </if>
+      <if test="modifyerName != null">
+        modifyer_name,
+      </if>
+      <if test="valid != null">
+        valid,
+      </if>
+      <if test="hospitalId != null">
+        hospital_id,
+      </if>
+      <if test="finallyUser != null">
+        finally_user,
+      </if>
+      <if test="lookUser != null">
+        look_user,
+      </if>
+      <if test="finallyPermission != null">
+        finally_permission,
+      </if>
+      <if test="finallyDep != null">
+        finally_dep,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="idcVersion != null">
+        #{idcVersion,jdbcType=INTEGER},
+      </if>
+      <if test="idcExtendId != null">
+        #{idcExtendId,jdbcType=VARCHAR},
+      </if>
+      <if test="idcName != null">
+        #{idcName,jdbcType=VARCHAR},
+      </if>
+      <if test="reportPermission != null">
+        #{reportPermission,jdbcType=VARCHAR},
+      </if>
+      <if test="reportUser != null">
+        #{reportUser,jdbcType=VARCHAR},
+      </if>
+      <if test="approvePermission != null">
+        #{approvePermission,jdbcType=VARCHAR},
+      </if>
+      <if test="approveUser != null">
+        #{approveUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lookPermission != null">
+        #{lookPermission,jdbcType=VARCHAR},
+      </if>
+      <if test="depId != null">
+        #{depId,jdbcType=VARCHAR},
+      </if>
+      <if test="depName != null">
+        #{depName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operCode != null">
+        #{operCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operName != null">
+        #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyerCode != null">
+        #{modifyerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyerName != null">
+        #{modifyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null">
+        #{valid,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalId != null">
+        #{hospitalId,jdbcType=VARCHAR},
+      </if>
+      <if test="finallyUser != null">
+        #{finallyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lookUser != null">
+        #{lookUser,jdbcType=VARCHAR},
+      </if>
+      <if test="finallyPermission != null">
+        #{finallyPermission,jdbcType=VARCHAR},
+      </if>
+      <if test="finallyDep != null">
+        #{finallyDep,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sungrow.wind.entity.Role">
+    update public.role
+    <set>
+      <if test="role != null">
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="idcVersion != null">
+        idc_version = #{idcVersion,jdbcType=INTEGER},
+      </if>
+      <if test="idcExtendId != null">
+        idc_extend_id = #{idcExtendId,jdbcType=VARCHAR},
+      </if>
+      <if test="idcName != null">
+        idc_name = #{idcName,jdbcType=VARCHAR},
+      </if>
+      <if test="reportPermission != null">
+        report_permission = #{reportPermission,jdbcType=VARCHAR},
+      </if>
+      <if test="reportUser != null">
+        report_user = #{reportUser,jdbcType=VARCHAR},
+      </if>
+      <if test="approvePermission != null">
+        approve_permission = #{approvePermission,jdbcType=VARCHAR},
+      </if>
+      <if test="approveUser != null">
+        approve_user = #{approveUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lookPermission != null">
+        look_permission = #{lookPermission,jdbcType=VARCHAR},
+      </if>
+      <if test="depId != null">
+        dep_id = #{depId,jdbcType=VARCHAR},
+      </if>
+      <if test="depName != null">
+        dep_name = #{depName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operCode != null">
+        oper_code = #{operCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operName != null">
+        oper_name = #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyerCode != null">
+        modifyer_code = #{modifyerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyerName != null">
+        modifyer_name = #{modifyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null">
+        valid = #{valid,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalId != null">
+        hospital_id = #{hospitalId,jdbcType=VARCHAR},
+      </if>
+      <if test="finallyUser != null">
+        finally_user = #{finallyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lookUser != null">
+        look_user = #{lookUser,jdbcType=VARCHAR},
+      </if>
+      <if test="finallyPermission != null">
+        finally_permission = #{finallyPermission,jdbcType=VARCHAR},
+      </if>
+      <if test="finallyDep != null">
+        finally_dep = #{finallyDep,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where role_id = #{roleId,jdbcType=VARCHAR}
+     and valid = '1' 
+  </update>
+  <select id="listByPage" parameterType="com.sungrow.wind.vo.query.RoleQueryVO" resultMap="BaseResultMap">
+    select * from public.role
+    <where>
+      <if test="roleId != null and roleId.trim() != '' ">
+        and role_id = #{roleId,jdbcType=VARCHAR}
+      </if>
+      <if test="role != null and role.trim() != '' ">
+        and role = #{role,jdbcType=VARCHAR}
+      </if>
+      <if test="idcVersion != null ">
+        and idc_version = #{idcVersion,jdbcType=INTEGER}
+      </if>
+      <choose>
+        <when test='idcExtendFlag != null and idcExtendFlag.trim() == "1" '>
+          and idc_extend_id != #{idcExtendId,jdbcType=VARCHAR}
+        </when>
+        <otherwise>
+          <if test="idcExtendId != null and idcExtendId.trim() != '' ">
+            and idc_extend_id = #{idcExtendId,jdbcType=VARCHAR}
+          </if>
+        </otherwise>
+      </choose>
+
+      <if test="idcName != null and idcName.trim() != '' ">
+        and idc_name = #{idcName,jdbcType=VARCHAR}
+      </if>
+      <if test="reportPermission != null and reportPermission.trim() != '' ">
+        and report_permission = #{reportPermission,jdbcType=VARCHAR}
+      </if>
+      <if test="reportUser != null and reportUser.trim() != '' ">
+        and report_user = #{reportUser,jdbcType=VARCHAR}
+      </if>
+      <if test="approvePermission != null and approvePermission.trim() != '' ">
+        and approve_permission = #{approvePermission,jdbcType=VARCHAR}
+      </if>
+      <if test="approveUser != null and approveUser.trim() != '' ">
+        and approve_user = #{approveUser,jdbcType=VARCHAR}
+      </if>
+      <if test="lookPermission != null and lookPermission.trim() != '' ">
+        and look_permission = #{lookPermission,jdbcType=VARCHAR}
+      </if>
+      <if test="depId != null and depId.trim() != '' ">
+        and dep_id = #{depId,jdbcType=VARCHAR}
+      </if>
+      <if test="depName != null and depName.trim() != '' ">
+        and dep_name = #{depName,jdbcType=VARCHAR}
+      </if>
+      <if test="hospitalId != null and hospitalId.trim() != '' ">
+        and hospital_id = #{hospitalId,jdbcType=VARCHAR}
+      </if>
+      <if test="finallyUser != null and finallyUser.trim() != '' ">
+        and finally_user = #{finallyUser,jdbcType=VARCHAR}
+      </if>
+      <if test="lookUser != null and lookUser.trim() != '' ">
+        and look_user = #{lookUser,jdbcType=VARCHAR}
+      </if>
+      <if test="finallyPermission != null and finallyPermission.trim() != '' ">
+        and finally_permission = #{finallyPermission,jdbcType=VARCHAR}
+      </if>
+      <if test="finallyDep != null and finallyDep.trim() != '' ">
+        and finally_dep = #{finallyDep,jdbcType=VARCHAR}
+      </if>
+       and valid = '1' 
+    </where>
+    order by create_time desc
+  </select>
+
+</mapper>
